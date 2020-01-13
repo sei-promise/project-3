@@ -1,7 +1,12 @@
 import React from "react";
+import Dropdown from "../components/Dropdown";
 
 const Home = () => {
-  return <h1>Hello, World</h1>;
+  return (
+    <div>
+      <Dropdown />
+    </div>
+  );
 };
 
 export default Home;
