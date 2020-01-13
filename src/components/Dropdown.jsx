@@ -5,7 +5,6 @@ class Dropdown extends Component {
   state = {};
 
   render() {
-    console.log(this.props);
 
     return (
       <div>
@@ -26,7 +25,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeAmount: () => dispatch({ type: "CHANGE_AMOUNT", value: 5 })
+    changeAmount: (value) => dispatch({ type: "CHANGE_AMOUNT", value }),
+    changeCategory: (category) => dispatch({ type: "CHANGE_CATEGORY", value: category }),
+    changeLevel: (level) => dispatch({ type: "CHANGE_LEVEL", value: level }),
+    changeType: (type) => dispatch({ type: "CHANGE_LEVEL", value: type }),
   };
 };
 
