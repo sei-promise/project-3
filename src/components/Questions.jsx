@@ -5,7 +5,8 @@ class Questions extends Component {
     state = { 
         
      }
-    render() { 
+    render() {
+        this.props.questions 
         return ( 
             <div>
 
