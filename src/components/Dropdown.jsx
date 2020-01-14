@@ -1,35 +1,23 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+// Input and Label are components from reactstrap library
+import { Input, Label } from "reactstrap";
 
 class Dropdown extends Component {
-  state = {};
-
   render() {
-
+    const { name, title, options, onChange } = this.props;
     return (
-      <div>
-        <h1>Dropdown</h1>
+      <div className="dropdown">
+        <Label for={name}>{title}</Label>
+        <Input type="select" name={name} id={name} onChange={onChange}>
+          {options.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.text}
+            </option>
+          ))}
+        </Input>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    amount: state.apiOptions.amount,
-    category: state.apiOptions.category,
-    level: state.apiOptions.level,
-    type: state.apiOptions.type
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    changeAmount: (value) => dispatch({ type: "CHANGE_AMOUNT", value }),
-    changeCategory: (category) => dispatch({ type: "CHANGE_CATEGORY", value: category }),
-    changeLevel: (level) => dispatch({ type: "CHANGE_LEVEL", value: level }),
-    changeType: (type) => dispatch({ type: "CHANGE_LEVEL", value: type }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dropdown);
+export default Dropdown;
