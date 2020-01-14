@@ -53,7 +53,7 @@ class Home extends Component {
       .then(response => {
         const questions = response.data.results;
         this.props.start(questions);
-        this.props.history.push("/questions/0"); // go to first index in the questions index
+        this.props.history.push("/questions"); // go to first index in the questions index
       })
       .catch(err => console.log(err));
   };
