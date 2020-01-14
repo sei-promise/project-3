@@ -60,26 +60,30 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="home-page">
-        {/* looping over the dropdowns */}
-        {this.state.dropdowns.map((dropdown, index) => (
-          <Dropdown
-            key={index}
-            name={dropdown.name}
-            title={dropdown.title}
-            options={dropdown.options}
-            onChange={this.onChange}
-          />
-        ))}
-        <br />
-        <Button
-          outline={true}
-          block={true}
-          color="primary"
-          onClick={this.handleClick}
-        >
-          Start Game
-        </Button>
+      <div className="flex  flex-column h-100">
+        <div className="container h-100 flex flex-column justify-content-center w-500px">
+          <div className="bg-white p-5 rounded">
+            {/* looping over the dropdowns */}
+            {this.state.dropdowns.map((dropdown, index) => (
+              <Dropdown
+                key={index}
+                name={dropdown.name}
+                title={dropdown.title}
+                options={dropdown.options}
+                onChange={this.onChange}
+              />
+            ))}
+            <br />
+            <Button
+              outline={true}
+              block={true}
+              color="primary"
+              onClick={this.handleClick}
+            >
+              Start Game
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,24 +1,36 @@
-import React,{ Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
 class Answers extends Component {
-    render(){
-        return(
-            this.props.answers.map( answer => {
-                    return(
-                        <div>
-                            <h3 onClick={() => this.props.clickAnswer(answer)}> {answer} </h3>
-                            <hr />
-                        </div>
-                    );
-                } )
-          
-         );
-    }
+  state = {
+    selected: 0
+  };
+
+  handleClick = (answer, index) => {
+    this.props.clickAnswer(answer);
+    this.setState({ selected: index });
+  };
+
+  render() {
+    return this.props.answers.map((answer, index) => {
+      return (
+        <div
+          className={`clickable${
+            this.state.selected === index ? " selected" : ""
+          }`}
+          onClick={() => this.handleClick(answer, index)}
+        >
+          <strong>{answer}</strong>
+          <hr />
+        </div>
+      );
+    });
+  }
 }
 
-const mapDispatchToProps = dispatch => { 
-    return {
-        clickAnswer: (answer) => dispatch({type: "ANSWER", answer: answer})
-    };
-}
-export default connect( null , mapDispatchToProps )(Answers);
+const mapDispatchToProps = dispatch => {
+  return {
+    clickAnswer: answer => dispatch({ type: "ANSWER", answer: answer })
+  };
+};
+export default connect(null, mapDispatchToProps)(Answers);
