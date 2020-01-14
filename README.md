@@ -18,6 +18,14 @@ Single page application built-in React that utilize (trivia db API) which is que
 
 ![alt text](prototype/Desktop1.png?raw=true)
 
+##### Route `/questions/:id/`
+
+![alt text](prototype/Desktop2.png?raw=true)
+
+##### Route `/final`
+
+![alt text](prototype/Desktop3.png?raw=true)
+
 ### Components
 
 ![Components](https://slack-files.com/TA2AHQDQ8-FS7UQU7GT-29f03ffed5)
