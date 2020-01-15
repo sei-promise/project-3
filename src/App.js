@@ -8,9 +8,9 @@ import Results from "./pages/Results";
 function App() {
   return (
     <div className="App h-100">
-      <Route path="/" exact component={Home} />
-      <Route path="/questions" exact component={Show_Question} />
-      <Route path="/results" exact component={Results} />
+      <Route path="/project-3/" exact component={Home} />
+      <Route path="/project-3/questions" exact component={Show_Question} />
+      <Route path="/project-3/results" exact component={Results} />
     </div>
   );
 }
