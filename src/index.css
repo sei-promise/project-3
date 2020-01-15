@@ -5,7 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #010101;
+  /* background-color: #010101; */
+  background: url("./BookBG.jpg" ) no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+
+ 
 }
 
 code {
@@ -51,7 +56,7 @@ body {
 
 .selected {
   background-color: #15d5ff !important;
-  color: #ffffff !important;
+  color:#ffffff !important;
 }
 
 .clickable {
