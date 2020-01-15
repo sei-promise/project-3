@@ -54,13 +54,20 @@ class Show_Question extends Component {
     // 1. check if user answer is equal to the correct_answer
     if (this.props.answer === this.state.correct_answer) {
       this.props.addScore(); // if so then add score
+    } else {
+      this.props.incorrect_number();
+    }
+
+    // TODO: check if id greater than or equal to questions.length - 1 => go to /results page
+    if (this.state.id >= this.props.questions.length - 1) {
+      this.props.history.push("/results");
+      return true;
     }
 
     // 2. update the state
     this.setState(({ ...copyState }) => {
       // 1. add one to the id
       copyState.id += 1;
-      // TODO: check if id > questions.length - 1 => go to /results page
 
       // 2. get correct_answer and incorrect_answer from the second or the third question object
       // question object will come based on the state.id
@@ -90,7 +97,7 @@ class Show_Question extends Component {
       <div className="flex  flex-column h-100">
         <div className="container h-100 flex flex-column justify-content-center w-500px">
           <div className="bg-white p-5 rounded">
-            <h5 className="text-right">Score: {this.props.score}</h5>
+            <h5 className="text-right">Score: +{this.props.score}</h5>
             <h4>
               {this.props.questions[this.state.id].question.replace(
                 /&quot;/gi,
@@ -123,7 +130,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addScore: () => dispatch({ type: "CORRECT" })
+    addScore: () => dispatch({ type: "CORRECT" }),
+    incorrect_number: () => dispatch({ type: "INCORRECT_NUMBER" })
   };
 };
 
