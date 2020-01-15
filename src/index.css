@@ -53,8 +53,13 @@ body {
 
 .clickable {
   cursor: pointer;
+  transition: 350ms ease-out;
+  
 }
-
+.clickable:hover {
+  background-color: lightgray;
+   
+}
 .green {
   color: green;
 }
