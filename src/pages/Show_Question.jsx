@@ -6,15 +6,15 @@ import { Button } from "reactstrap";
 
 class Show_Question extends Component {
   state = {
-    answers: [],
-    id: 0,
-    correct_answer: ""
+    answers: [], // collection of answers both correct & incorrects
+    id: 0, // start from the first question
+    correct_answer: "" // this will hold the correct_answer from the question object
   };
 
+  // this function will randomize the whole array
   shuffle = arr => {
-    console.log(arr[arr.length - 1]);
     for (let i = 0; i < arr.length; i++) {
-      let j = Math.floor(Math.random() * arr.length);
+      const j = Math.floor(Math.random() * arr.length);
       let temp = arr[i];
       arr[i] = arr[j];
       arr[j] = temp;
@@ -22,36 +22,65 @@ class Show_Question extends Component {
     return arr;
   };
 
+  // this will get the current question based on this.state.id
   componentDidMount() {
+    // get correct_answer and incorrect_answer from the question object
     const { correct_answer, incorrect_answers } = this.props.questions[
       this.state.id
     ];
+    // print the two variables
     console.log(correct_answer, incorrect_answers);
+    // update the state
     this.setState(({ ...copyState }) => {
-      copyState.answers = this.shuffle(
-        incorrect_answers.concat(correct_answer)
-      );
+      // 1. concat the correct_answer with incorrect_answers
+      const answers = incorrect_answers.concat(correct_answer);
+      // 2. randomize the answers array at the first time
+      // and set the answers to the new answers array
+      copyState.answers = this.shuffle(answers);
+      // 3. set the correct_answer in the state
       copyState.correct_answer = correct_answer;
+      // 4. return the new state
       return copyState;
     });
   }
+
+  // this will run when the user clicks on the next button
   onNextClick = () => {
+    // 1. check if user answer is equal to the correct_answer
     if (this.props.answer === this.state.correct_answer) {
-      this.props.addScore();
+      this.props.addScore(); // if so then add score
     }
+
+    // 2. update the state
     this.setState(({ ...copyState }) => {
+      // 1. add one to the id
       copyState.id += 1;
+      // TODO: check if id > questions.length - 1 => go to /results page
+
+      // 2. get correct_answer and incorrect_answer from the second or the third question object
+      // question object will come based on the state.id
       const { correct_answer, incorrect_answers } = this.props.questions[
         copyState.id
       ];
-      copyState.answers = this.shuffle(
-        incorrect_answers.concat(correct_answer)
-      );
+
+      // 3. concat the correct_answer with incorrect_answers
+      const answers = incorrect_answers.concat(correct_answer);
+
+      // 4. randomize the answers array again
+      // and change the answers to the new answers array
+      copyState.answers = this.shuffle(answers);
+
+      // 5. change the correct_answer in the state
       copyState.correct_answer = correct_answer;
+
+      // 6. return the new state
       return copyState;
     });
   };
   render() {
+    // check if there's answers
+    // true => render jsx
+    // false => return null
     const content = this.state.answers.length ? (
       <div className="flex  flex-column h-100">
         <div className="container h-100 flex flex-column justify-content-center w-500px">
@@ -78,6 +107,7 @@ class Show_Question extends Component {
   }
 }
 
+// get the questions, answer, score from redux
 const mapStateToProps = state => {
   return {
     questions: state.questions,

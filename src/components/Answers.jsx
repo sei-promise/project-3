@@ -8,6 +8,8 @@ class Answers extends Component {
 
   handleClick = (answer, index) => {
     this.props.clickAnswer(answer);
+    // this is not good because we are re-rendering the whole component on each click on the answer
+    // TODO: mpve selected to store/reducer
     this.setState({ selected: index });
   };
 
