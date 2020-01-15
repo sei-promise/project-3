@@ -21,6 +21,7 @@ class Answers extends Component {
             this.state.selected === index ? " selected" : ""
           }`}
           onClick={() => this.handleClick(answer, index)}
+          key={index}
         >
           <strong>{answer}</strong>
           <hr />
