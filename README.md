@@ -21,6 +21,10 @@ Single page application built-in React that utilize (trivia db API) which is que
 4. As a user I want to select the type of answers.
 5. As a user I`m able to answer the Q/A.
 
+### Components
+
+![components](images/components.png?raw=true)
+
 ### Prototype
 
 ##### Route `/`
@@ -34,7 +38,3 @@ Single page application built-in React that utilize (trivia db API) which is que
 ##### Route `/results`
 
 ![results_page](images/prototype/Desktop3.png?raw=true)
-
-### Components
-
-![components](images/components.png?raw=true)
