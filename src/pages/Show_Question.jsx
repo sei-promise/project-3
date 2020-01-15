@@ -24,12 +24,17 @@ class Show_Question extends Component {
 
   // this will get the current question based on this.state.id
   componentDidMount() {
+    if (this.props.questions.length === 0) {
+      this.props.history.push("/");
+      return false;
+    }
+
     // get correct_answer and incorrect_answer from the question object
     const { correct_answer, incorrect_answers } = this.props.questions[
       this.state.id
     ];
     // print the two variables
-    console.log(correct_answer, incorrect_answers);
+    // console.log(correct_answer, incorrect_answers);
     // update the state
     this.setState(({ ...copyState }) => {
       // 1. concat the correct_answer with incorrect_answers
