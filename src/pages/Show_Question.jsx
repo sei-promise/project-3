@@ -97,7 +97,14 @@ class Show_Question extends Component {
       <div className="flex  flex-column h-100">
         <div className="container h-100 flex flex-column justify-content-center w-500px">
           <div className="bg-white p-5 rounded">
-            <h5 className="text-right">Score: +{this.props.score}</h5>
+            <div className="flex align-items-center justify-content-between mb-2">
+              <div>
+                <h5>Question: {this.state.id + 1}</h5>
+              </div>
+              <div>
+                <h5>Score: +{this.props.score}</h5>
+              </div>
+            </div>
             <h4>
               {this.props.questions[this.state.id].question.replace(
                 /&quot;/gi,
