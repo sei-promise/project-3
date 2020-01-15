@@ -93,13 +93,17 @@ class Show_Question extends Component {
     // check if there's answers
     // true => render jsx
     // false => return null
+    const question_number = this.state.id + 1;
+    const questions_len = this.props.questions.length;
     const content = this.state.answers.length ? (
       <div className="flex  flex-column h-100">
         <div className="container h-100 flex flex-column justify-content-center w-500px">
           <div className="bg-white p-5 rounded">
             <div className="flex align-items-center justify-content-between mb-2">
               <div>
-                <h5>Question: {this.state.id + 1}</h5>
+                <h5>
+                  Question: {question_number} out of {questions_len}{" "}
+                </h5>
               </div>
               <div>
                 <h5>Score: +{this.props.score}</h5>
