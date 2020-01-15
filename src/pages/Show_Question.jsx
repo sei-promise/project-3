@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import Answers from "../Answers";
+import Answers from "../components/Answers";
 import { Button } from "reactstrap";
 
 class Show_Question extends Component {
